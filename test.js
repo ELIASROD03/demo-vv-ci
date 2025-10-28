@@ -8,10 +8,10 @@ function runTest() {
 
   if (valorActual === valorEsperado) {
     console.log(`✅ PRUEBA EXITOSA: Se esperaba ${valorEsperado}, se obtuvo ${valorActual}.`);
-    // ¡No necesitamos process.exit(0)! El script terminará exitosamente.
+    
   } else {
     console.error(`❌ PRUEBA FALLIDA: Se esperaba ${valorEsperado} pero se obtuvo ${valorActual}.`);
-    process.exit(1); // ¡Esto SÍ es necesario para decirle a GitHub que la prueba falló!
+    process.exit(1); 
   }
 }
 
