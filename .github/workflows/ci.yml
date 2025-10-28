@@ -1,0 +1,27 @@
+name: Demo de CI para V&V
+
+# 1. El "Trigger": Cuándo se ejecuta
+on:
+  push:
+    branches: [ "main" ] # Se ejecuta en CADA push a la rama "main"
+
+# 2. El "Job": Qué se ejecuta
+jobs:
+  build-and-test:
+    # 3. La "Máquina": Dónde se ejecuta
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Bajar el código del repositorio a la máquina virtual
+      - name: Bajar el código
+        uses: actions/checkout@v4
+
+      # Paso 2: Configurar el entorno (en este caso, Node.js)
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Paso 3: Nuestra "Puerta de Calidad" (Quality Gate)
+      - name: Correr nuestra prueba de V&V
+        run: node test.js
